@@ -1,0 +1,50 @@
+{
+  "name": "channel-easy-clipper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lintstaged": "lint-staged",
+    "prepare": "husky install",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "eslint"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyeongsoosoo/channel-easy-clipper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyeongsoosoo/channel-easy-clipper/issues"
+  },
+  "homepage": "https://github.com/kyeongsoosoo/channel-easy-clipper#readme",
+  "dependencies": {
+    "@fxts/core": "^0.7.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.0",
+    "@types/node": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "lint-staged": "^13.0.0",
+    "ts-jest": "^28.0.4",
+    "typescript": "^4.7.2"
+  }
+}

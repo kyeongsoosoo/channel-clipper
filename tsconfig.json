@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "isolatedModules": true,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "baseUrl": "./",
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "noImplicitAny": false,
+      "moduleResolution": "node",
+      "noEmit": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "target": "esnext",
+      "paths": {
+        "*": [
+          "node_modules/*",
+          "src/typings/*"
+        ],
+        "Files/*": [
+          "src/files/*"
+        ],
+      },
+    },
+    "include": [
+      "src/**/*.ts",
+    ],
+    "exclude": [
+      "src/**/*/.js",
+      "node_modules",
+    ]
+}
+  
