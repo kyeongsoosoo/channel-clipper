@@ -40,6 +40,12 @@ class GroupOpenApiSender implements SenderBase {
       },
     );
   }
+
+  getGroups() {
+    return get(this.client.auth)(
+      `${this.url}`,
+    );
+  }
 }
 class UserChatOpenApiSender implements SenderBase {
   client: ChannelOpenApiClient;

@@ -1,3 +1,9 @@
+import {
+  Group,
+  Message,
+  User, 
+} from './openApi/types';
+
 type ChannelWebhookEvent = string;
 
 // NOTE: Didn't describe for unused fields
@@ -16,3 +22,21 @@ export type WebhookResponse = TypedResponseBody<{
   event: ChannelWebhookEvent
   entity: ChannelWebhookEntity
 }>;
+
+export type MakeCommandReturnType = {
+  plainText: string
+  userChatId: string
+  clipSize: number
+  startPoint: number
+  chatRoom: string
+};
+
+export type ClippingContentType = {
+  user: User
+  message: Array<Message>
+};
+
+export type ClippingInfoType = {
+  chatRoom: Group
+  clipContent: ClippingContentType
+};
