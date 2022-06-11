@@ -59,7 +59,7 @@ export const getFormattedBlock = (clipContent: ClippingContentType) => {
     
 export const makePostMessageDTO = (clipperPost: ClippingInfoType): PostMessageDTO => {
   const groupId = clipperPost.chatRoom.id;
-  const botName = process.env.BOT_NAME ?? '클리퍼봇';
+  const botName = process.env.DEFAULT_BOT_NAME ?? '클리퍼봇';
     
   return {
     groupId,

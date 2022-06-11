@@ -24,13 +24,6 @@ app.get('/', (req, res) => {
   res.send('hi');
 });
 
-
-
-
-
-
-
-
 app.post('/', 
   async (res: WebhookResponse) => {
     try {
