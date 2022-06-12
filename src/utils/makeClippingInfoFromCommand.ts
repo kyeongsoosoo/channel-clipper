@@ -47,14 +47,16 @@ const getUserFromUserChat = (userChat: GetUserChatMessageDTO) => {
   );
 };
 
-const getTargetChatRoomFromCommand = async (command: MakeCommandReturnType) => {
-  const chatRooms = (await (await client.group.getGroups()).json()).groups as Array<Group>;
-    
+export const getGroupChatRooms = async () => {
+  return (await (await client.group.getGroups()).json()).groups as Array<Group>;
+};
+
+export const getTargetChatRoomFromCommand = async (command: MakeCommandReturnType, chatRooms: Group[]) => {
   const findMatchedChatRoomFromCommand = (c: MakeCommandReturnType, chatRoom:Group) => chatRoom.name === c.chatRoom;
   const findMatchedChatRoom = curry(findMatchedChatRoomFromCommand)(command);
+
     
-    
-  const targetChatRoom = pipe(
+  const targetChatRoom =  pipe(
     chatRooms,
     find(findMatchedChatRoom),
   );
@@ -68,10 +70,12 @@ const makeClippingContentFromCommandAndUserChat = (command: MakeCommandReturnTyp
     message: getClippingMessagesFromCommandAndUserChat(command, userChat),
   };
 };
+
+const getUserChatMessages = async (userChatId: string) => {
+  return  await (await client.user.getMessages({ userChatId })).json() as GetUserChatMessageDTO;
+};
     
-const makeClippingContentFromCommand = async (command: MakeCommandReturnType) => {
-  const userChat =  await (await client.user.getMessages({ userChatId: command.userChatId })).json() as GetUserChatMessageDTO;
-  
+export const makeClippingContentFromCommand = async (command: MakeCommandReturnType, userChat: GetUserChatMessageDTO) => {  
   const makeClippingContentFromUserChat = curry(makeClippingContentFromCommandAndUserChat)(command);
     
   const content = pipe(
@@ -83,9 +87,12 @@ const makeClippingContentFromCommand = async (command: MakeCommandReturnType) =>
 };
   
 export const makeClippingInfoFromCommand = async (command: MakeCommandReturnType):Promise<ClippingInfoType> => {
+  const chatRooms = await getGroupChatRooms();
+  const userChat = await getUserChatMessages(command.userChatId);
+
   return {
-    chatRoom: await getTargetChatRoomFromCommand(command),
-    clipContent: await makeClippingContentFromCommand(command),
+    chatRoom: await getTargetChatRoomFromCommand(command, chatRooms),
+    clipContent: await makeClippingContentFromCommand(command, userChat),
   };
 };
 
