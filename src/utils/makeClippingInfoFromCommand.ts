@@ -11,7 +11,7 @@ import {
 } from '@fxts/core';
 
 /* Internal dependencies */
-import { client } from '../consts';
+import { client } from '../client';
 import { 
   GetUserChatMessageDTO, 
   Group, 

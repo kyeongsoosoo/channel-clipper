@@ -4,7 +4,7 @@ import 'dotenv/config';
 import express from 'express';
 
 /* Internal dependencies */
-import { client } from './consts';
+import { client } from './client';
 import { WebhookResponse } from './types';
 import { makeClippingInfoFromCommand } from './utils/makeClippingInfoFromCommand';
 import { makeCommandFromWebhook } from './utils/makeCommandFromWebhook';
@@ -18,11 +18,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded( { extended : false } ));
-
-
-app.get('/', (req, res) => {
-  res.send('hi');
-});
 
 app.post('/', 
   async (res: WebhookResponse) => {
