@@ -41,8 +41,8 @@ describe('makeClippingInfoFromCommand', () => {
       command = makeCommandFromWebhook(webhookRes);
       
       clipContent = await makeClippingContentFromCommand(command, GetUserChatMessagesMock);
-      expect(clipContent.message[0].plainText).toBe(GetUserChatMessagesMock.messages[0].plainText);
-      expect(clipContent.message[1].plainText).toBe(GetUserChatMessagesMock.messages[2].plainText);
+      expect(clipContent.message[0].plainText).toBe(GetUserChatMessagesMock.messages[2].plainText);
+      expect(clipContent.message[1].plainText).toBe(GetUserChatMessagesMock.messages[0].plainText);
     });
 
     it('should return clipped messages from starting point with given user chat', async () => {  

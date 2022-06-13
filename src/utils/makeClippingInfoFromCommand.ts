@@ -6,7 +6,8 @@ import {
   drop,
   filter,
   take,
-  toArray, 
+  toArray,
+  reverse, 
 } from '@fxts/core';
 
 /* Internal dependencies */
@@ -33,6 +34,7 @@ const getClippingMessagesFromCommandAndUserChat = (command: MakeCommandReturnTyp
     filter(isUserMessage),
     drop(command.startPoint),
     take(command.clipSize),
+    reverse,
     toArray,
   );
     
